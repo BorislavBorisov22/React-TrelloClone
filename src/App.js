@@ -4,6 +4,7 @@ import './App.css';
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Boards from './boards/BoardsPage';
+import BoardPage from './board/BoardPage';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route exact path="/" component={Boards} />
+          <Route exact path="/:id" component={BoardPage} />
         </div>
       </Router>
     );
