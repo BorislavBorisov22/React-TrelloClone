@@ -11,6 +11,15 @@ const combineReducers = (reducerFunctions) => {
     };
 };
 
+const bindActionCreators = (actionCreators, dispatch) => {
+    return Object.keys(actionCreators).reduce((acc, currentKey) => {
+        acc[currentKey] = (...args) => {
+            dispatch(actionCreators[currentKey](...args));
+        };
+        return acc;
+    }, {});
+};
+
 const connect = (mapStateToProps, mapDispatchToPros) => {
 
     return (Component) => {
@@ -23,4 +32,4 @@ const connect = (mapStateToProps, mapDispatchToPros) => {
     };
 };
 
-export { combineReducers };
+export { combineReducers, bindActionCreators };
