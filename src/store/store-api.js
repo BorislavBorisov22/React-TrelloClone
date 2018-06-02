@@ -30,4 +30,9 @@ class StoreApi {
     notifySubscribers() {
         this.subscriptions.forEach(s => s());
     }
+
+    dispatch(action) {
+        this.updateState(action);
+        this.notifySubscribers();
+    }
 }

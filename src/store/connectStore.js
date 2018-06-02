@@ -1,10 +1,14 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const combineReducers = (reducerFunctions) => {
     return (state, action) => {
         return Object.keys(reducerFunctions).reduce((prevState, reducerKey) => {
-            state[reducerKey] = reducerFunctions[reducerKey](prevState[reducerKey], action);
+            state = {
+                ...state,
+                [reducerKey]: reducerFunctions[reducerKey(prevState[reducerKey], action)]
+            }
         }, state);
 
         return state;
@@ -20,16 +24,56 @@ const bindActionCreators = (actionCreators, dispatch) => {
     }, {});
 };
 
-const connect = (mapStateToProps, mapDispatchToPros) => {
+const connectToStore = (mapStateToProps, mapDispatchToProps) => {
 
     return (Component) => {
-        class StoreConnectedComponent extends React.Component {
+        class StoreConnectedComponent extends React.PureComponent {
+
+            constructor() {
+                this.usedState = this.usedState.bind(this);
+                this.extraProps = this.extraProps.bind(this);
+                this.dispatchProps = this.dispatchProps.bind(this);
+
+                this.store = this.context.store;
+            }
+
+            componentWillMount() {
+                this.subscriptionId = this.store.subscribe(() => {
+                    this.setState(this.usedState);
+                });
+            }
+
+            componentWillUnmount() {
+                if (this.subscriptionId) {
+                    this.store.unsubscribe();
+                }
+            }
+
+            usedState() {
+                return {
+                    ...this.extraProps(),
+                    ...this.dispatchProps(),
+                    ...this.props
+                }
+            }
+
+            extraProps() {
+                return mapStateToProps(this.store.getState(), this.props);
+            }
+
+            dispatchProps() {
+                return mapDispatchToProps(this.store.dispatch.bind(this));
+            }
 
             render() {
-                return (<Component />)
+                return (<Component {...this.usedState()} />)
             }
         }
+
+        StoreConnectedComponent.contextTypes = {
+            store: PropTypes.object.isRequired
+        };
     };
 };
 
-export { combineReducers, bindActionCreators };
+export { combineReducers, bindActionCreators, connectToStore };
