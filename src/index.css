@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: visible;
+}
+
+
+input {
+    padding: 11px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2.5px solid rgba(255, 255, 255, 0.8);
+    width: 100%;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
+    width: 200px;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    margin: 2.5px 0 10px 0;
+    opacity: 0.25;
+}
+
+.error {
+    color: #000;
+    text-shadow: 1px 1px 1px white;
+    text-align: center;
+    font-weight: 400;
+    margin: 10px 0 0 0;
+    text-align: center;
+    font-size: 12px
+}
+
+a {
+    text-decoration: none;
+}
+
+.createNewBoardCard {
+    color: white;
+    width: 345px;
+    height: auto;
+    margin: 20px;
+    background-color: #9fe7a4;
+    padding: 30px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5.5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+    -webkit-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    font-weight: 900;
+    text-shadow: 0px 0px 3px #000;
+}
+
+.dBAoMo {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: solid 1px rgb(240,240,240);
+}
+
+.hfjVaS {
+    margin: 20px 0 5px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.dGUCUV {
+    width: 114px;
+    height: 43px;
+    margin: 15px 18px 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transition: all 250 ease-in-out;
+    transition: all 250 ease-in-out;
+    border: none;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
+}
+
+.bNrnZp {
+    width: auto;
+    height: 43px;
+    margin: 15px -5px 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    border: none;
+    background: none;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0px 0px 3px #000;
+}

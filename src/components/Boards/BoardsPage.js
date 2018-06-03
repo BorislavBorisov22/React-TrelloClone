@@ -2,10 +2,20 @@
 import React from 'react';
 import { connectToStore, bindActionCreators } from '../../store/connectStore';
 import * as boardsActions from './../../actions/boardsActions';
+import AddBoard from './AddBoard';
 
 
 class BoardsPage extends React.Component {
 
+    constructor() {
+        super();
+
+        this.addNewBoard = this.addNewBoard.bind(this);
+    }
+
+    addNewBoard(board) {
+        this.props.boardActions.addNewBoard(board);
+    }
 
     render() {
         console.log(this.props, 'propsa brat');
@@ -15,8 +25,7 @@ class BoardsPage extends React.Component {
 
         return (
             <div>
-                <h1>Boards Page {JSON.stringify(this.props.boards)}</h1>
-                <button onClick={newBoard}>Add Board</button>
+                <AddBoard addNewBoard={this.addNewBoard} />
             </div>
         )
     }
