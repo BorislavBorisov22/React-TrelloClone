@@ -13,6 +13,7 @@ class AddBoard extends React.Component {
         };
 
         this.toggleNewBoardForm = this.toggleNewBoardForm.bind(this);
+        this.onCreateNewBoardDivClicked = this.onCreateNewBoardDivClicked.bind(this);
     }
 
     toggleNewBoardForm() {
@@ -23,11 +24,19 @@ class AddBoard extends React.Component {
         });
     }
 
+    onCreateNewBoardDivClicked() {
+        if (this.state.newBoardFormVisible) {
+            return;
+        }
+
+        this.toggleNewBoardForm();
+    }
+
     render() {
         return (
-            <div className="createNewBoardCard">
+            <div onClick={this.onCreateNewBoardDivClicked} className="createNewBoardCard">
                 {!this.state.newBoardFormVisible &&
-                    <div onClick={this.toggleNewBoardForm}>
+                    <div>
                         <div>
                             <h3 className="sc-bwzfXH geDKqP">Create a new board...</h3>
                         </div>
@@ -38,7 +47,12 @@ class AddBoard extends React.Component {
                         <h3 className="sc-EHOje cHtzYU">Creating a board</h3>
                         <img onClick={this.toggleNewBoardForm} className="sc-gzVnrw gdtwMV" src="https://trello-copy-ddiaorohmd.now.sh/static/media/closeIcon.e5ef77f2.svg" />
                     </div>
-                    && (<AddBoardForm />)
+                }
+                {this.state.newBoardFormVisible &&
+                    <AddBoardForm onCancel={this.toggleNewBoardForm} onCreate={(board) => {
+                        this.props.addNewBoard(board);
+                        this.toggleNewBoardForm();
+                    }} />
                 }
             </div>
         );
