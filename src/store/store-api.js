@@ -6,7 +6,7 @@ class StoreApi {
         this.lastSubscriptionId = 0;
 
         this.reducer = reducer;
-        this.state = this.updateState();
+        this.updateState({});
     }
 
     getState() {
@@ -36,3 +36,5 @@ class StoreApi {
         this.notifySubscribers();
     }
 }
+
+export default StoreApi;

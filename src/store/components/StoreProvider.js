@@ -2,15 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class StoreProvider extends React.Component {
-    constructor() {
-        this.store = this.props.store;
-    }
 
     getChildContext() {
-        const { store } = this.props.store;
+        const { store } = this.props;
         return {
             store
         }
+    }
+
+    componentDidMount() {
+        this.props.store.notifySubscribers();
+    }
+
+    render() {
+        return (
+            <div>
+                {this.props.children}
+            </div>
+        )
     }
 }
 

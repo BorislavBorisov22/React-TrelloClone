@@ -1,17 +1,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import StoreApi from './store-api';
 
 const combineReducers = (reducerFunctions) => {
     return (state, action) => {
         return Object.keys(reducerFunctions).reduce((prevState, reducerKey) => {
-            state = {
-                ...state,
-                [reducerKey]: reducerFunctions[reducerKey(prevState[reducerKey], action)]
+            const newState = {
+                ...prevState,
+                [reducerKey]: reducerFunctions[reducerKey](prevState[reducerKey], action)
             }
-        }, state);
 
-        return state;
+            return newState;
+        }, {});
     };
 };
 
@@ -24,12 +25,14 @@ const bindActionCreators = (actionCreators, dispatch) => {
     }, {});
 };
 
-const connectToStore = (mapStateToProps, mapDispatchToProps) => {
+const connectToStore = (mapStateToProps = () => ({}), mapDispatchToProps = () => ({})) => {
 
     return (Component) => {
         class StoreConnectedComponent extends React.PureComponent {
 
-            constructor() {
+            constructor(props, ctx) {
+                super(props, ctx);
+
                 this.usedState = this.usedState.bind(this);
                 this.extraProps = this.extraProps.bind(this);
                 this.dispatchProps = this.dispatchProps.bind(this);
@@ -73,7 +76,15 @@ const connectToStore = (mapStateToProps, mapDispatchToProps) => {
         StoreConnectedComponent.contextTypes = {
             store: PropTypes.object.isRequired
         };
+
+        return StoreConnectedComponent;
     };
 };
 
+const createStore = (reducer) => {
+    return new StoreApi(reducer);
+};
+
 export { combineReducers, bindActionCreators, connectToStore };
+export default createStore;
+
