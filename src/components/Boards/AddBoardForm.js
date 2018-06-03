@@ -31,7 +31,9 @@ export class AddBoardForm extends React.Component {
         });
     }
 
-    onCreate() {
+    onCreate(ev) {
+        ev.preventDefault();
+
         if (!(this.state.board && this.state.board.name)) {
             this.setState({
                 errors: {
@@ -52,7 +54,7 @@ export class AddBoardForm extends React.Component {
                 <div className="sc-htoDjs hdswki">
                     <h5 className="sc-dnqmqq drKaqf">What shall we call the board?</h5>
                     <div>
-                        <form>
+                        <form onSubmit={this.onCreate}>
                             <label>
                                 <Input
                                     onChange={this.onBoardNameChange}
