@@ -3,6 +3,7 @@ import React from 'react';
 import { connectToStore, bindActionCreators } from '../../store/connectStore';
 import * as boardsActions from './../../actions/boardsActions';
 import AddBoard from './AddBoard';
+import BoardsList from './BoardsList';
 
 
 class BoardsPage extends React.Component {
@@ -18,7 +19,6 @@ class BoardsPage extends React.Component {
     }
 
     render() {
-        console.log(this.props, 'propsa brat');
         const newBoard = () => {
             this.props.boardActions.addNewBoard({ name: 'someboardname' });
         };
@@ -26,6 +26,7 @@ class BoardsPage extends React.Component {
         return (
             <div>
                 <AddBoard addNewBoard={this.addNewBoard} />
+                <BoardsList boards={this.props.boards} />
             </div>
         )
     }
