@@ -1,0 +1,1 @@
+export const CREATE_BOARD_ACTION = 'CREATE_BOARD';

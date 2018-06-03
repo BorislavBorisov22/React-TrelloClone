@@ -7,6 +7,13 @@ class StoreApi {
 
         this.reducer = reducer;
         this.updateState({});
+
+        this.dispatch = this.dispatch.bind(this);
+        this.updateState = this.updateState.bind(this);
+        this.getState = this.getState.bind(this);
+        this.subscribe = this.subscribe.bind(this);
+        this.notifySubscribers = this.notifySubscribers.bind(this);
+        this.unsubscribe = this.unsubscribe.bind(this);
     }
 
     getState() {
@@ -14,6 +21,7 @@ class StoreApi {
     }
 
     updateState(actionDispatched) {
+        this.state = this.state || {};
         this.state = this.reducer(this.state, actionDispatched);
     }
 

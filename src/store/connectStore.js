@@ -12,7 +12,7 @@ const combineReducers = (reducerFunctions) => {
             }
 
             return newState;
-        }, {});
+        }, state);
     };
 };
 
