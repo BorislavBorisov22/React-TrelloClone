@@ -1,4 +1,3 @@
-
 import { CREATE_BOARD_ACTION } from './actions';
 
 export function addNewBoard(newBoard) {
