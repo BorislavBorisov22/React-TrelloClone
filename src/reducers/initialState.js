@@ -1,3 +1,3 @@
 export default {
-    boards: []
+    boards: [{ name: 'testBoard', lists: [] }]
 };

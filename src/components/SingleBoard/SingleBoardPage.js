@@ -2,6 +2,8 @@ import React from 'react';
 import { connectToStore } from "../../store/connectStore";
 import { extractActiveBoard } from './../../selectors/boardSelectors';
 import BoardTitle from './BoardTitle';
+import BoardLists from './BoardLists';
+import { AddList } from './Lists/AddList';
 
 class SingleBoardPage extends React.Component {
 
@@ -9,6 +11,8 @@ class SingleBoardPage extends React.Component {
         return (
             <div>
                 <BoardTitle boardName={this.props.board.name} />
+                <BoardLists lists={this.props.board.lists} />
+                <AddList boardName={this.props.board.name} />
             </div>
         );
     }
