@@ -19,10 +19,6 @@ class BoardsPage extends React.Component {
     }
 
     render() {
-        const newBoard = () => {
-            this.props.boardActions.addNewBoard({ name: 'someboardname' });
-        };
-
         return (
             <div>
                 <AddBoard addNewBoard={this.addNewBoard} />
