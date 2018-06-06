@@ -218,7 +218,7 @@ a {
     display: -ms-flexbox;
     display: flex;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    width: 250px;
+    width: 270px;
     margin-left: 45px;
 }
 
@@ -227,4 +227,15 @@ a {
     left: 30px;
     top: -24px;
     z-index: 9999;
+}
+
+.eomhGf {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    background-image: url('https://trello-copy-ddiaorohmd.now.sh/static/media/closeIcon.e5ef77f2.svg');
+    background-repeat: no-repeat;
+    cursor: pointer;
 }

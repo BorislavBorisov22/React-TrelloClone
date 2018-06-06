@@ -61,7 +61,7 @@ class AddListForm extends React.Component {
                         />
                     </label>
                 </form>
-                <div className="sc-kAzzGY dbmEVi"><svg className="sc-chPdSV eomhGf"></svg>
+                <div className="sc-kAzzGY dbmEVi"><svg onClick={this.props.closeForm} className="sc-chPdSV eomhGf"></svg>
                 </div>
             </div>
         )
@@ -69,7 +69,8 @@ class AddListForm extends React.Component {
 }
 
 AddListForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    closeForm: PropTypes.func.isRequired
 };
 
 export default AddListForm;

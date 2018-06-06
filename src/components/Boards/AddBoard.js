@@ -45,7 +45,7 @@ class AddBoard extends React.Component {
                 {this.state.newBoardFormVisible &&
                     <div className="sc-bZQynM dBAoMo">
                         <h3 className="sc-EHOje cHtzYU">Creating a board</h3>
-                        <img onClick={this.toggleNewBoardForm} className="sc-gzVnrw gdtwMV" src="https://trello-copy-ddiaorohmd.now.sh/static/media/closeIcon.e5ef77f2.svg" />
+                        <img onClick={this.toggleNewBoardForm} className="sc-gzVnrw gdtwMV" alt="x icon" src="https://trello-copy-ddiaorohmd.now.sh/static/media/closeIcon.e5ef77f2.svg" />
                     </div>
                 }
                 {this.state.newBoardFormVisible &&

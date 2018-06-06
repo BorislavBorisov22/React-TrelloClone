@@ -15,7 +15,7 @@ class SingleBoardPage extends React.Component {
     }
 
     onAddNewList(list) {
-        this.addListToBoardAction(list, this.props.board.name);
+        this.props.addListToBoardAction(list, this.props.board.name);
     }
 
     render() {
@@ -45,4 +45,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connectToStore(mapStateToProps)(SingleBoardPage);
+export default connectToStore(mapStateToProps, mapDispatchToProps)(SingleBoardPage);

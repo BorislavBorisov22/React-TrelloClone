@@ -42,7 +42,10 @@ export class AddList extends React.Component {
                     <AddListForm onSubmit={(list, boardName) => {
                         this.props.onAddNewList(list, boardName);
                         this.toggleAddListForm();
-                    }} />
+                    }}
+
+                        closeForm={this.toggleAddListForm}
+                    />
                 }
             </div>
         );
