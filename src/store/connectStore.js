@@ -48,7 +48,8 @@ const connectToStore = (mapStateToProps = () => ({}), mapDispatchToProps = () =>
 
             componentWillUnmount() {
                 if (this.subscriptionId) {
-                    this.store.unsubscribe();
+                    this.store.unsubscribe(this.subscriptionId);
+                    this.subscriptionId = null;
                 }
             }
 

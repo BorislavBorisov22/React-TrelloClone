@@ -1,30 +1,59 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Input from './../../Common/Input';
+import ListCard from './ListCard';
 
 
-const List = ({ list }) => {
-    return (
-        <div className="sc-ckVGcZ pzoVb">
-            <h4 className="sc-jKJlTe ldRhSy">{list.name}</h4>
-            <hr />
-            <div>
-                <form>
-                    <label><label><input type="text" name="cardName_list_24" value="" className="input" /></label></label>
-                </form>
-                {/* <div draggable="true">
-                    <div className="sc-kGXeez dQRJlP" style="opacity: 1; box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 6px, rgba(0, 0, 0, 0.23) 0px 6px 6px; text-decoration: none; background-color: rgb(202, 255, 222);">
-                        <h3 className="sc-kpOJdX dUecFp">somelistname</h3>
-                        <div className="sc-dxgOiQ bjdCWn">✓</div>
-                    </div>
-                </div> */}
+class List extends React.Component {
+
+    constructor(props, ctx) {
+        super(props, ctx);
+
+        this.state = {
+            cardNameToAdd: ''
+        };
+
+        this.onCardNameInputChange = this.onCardNameInputChange.bind(this);
+    }
+
+    onCardNameInputChange(ev) {
+        this.setState({
+            cardNameToAdd: ev.target.value
+        })
+    }
+
+    render() {
+        const { list } = this.props;
+
+        return (
+            <div className="sc-ckVGcZ pzoVb">
+                <h4 className="sc-jKJlTe ldRhSy">{list.name}</h4>
+                <hr />
+                <div>
+                    <form onSubmit={(ev) => {
+                        ev.preventDefault();
+                        this.props.addCard(this.state.cardNameToAdd, list.name);
+                        this.setState({
+                            cardNameToAdd: ''
+                        });
+                    }}>
+                        <label>
+                            <label>
+                                <Input value={this.state.cardNameToAdd} onChange={this.onCardNameInputChange} />
+                            </label>
+                        </label>
+                    </form>
+                    {list.cards && list.cards.map(c => <ListCard key={c} cardName={c} />)}
+                </div>
             </div>
-        </div>
-    )
-};
+        )
+    }
+}
 
 List.propTypes = {
-    list: PropTypes.object.isRequired
+    list: PropTypes.object.isRequired,
+    addCard: PropTypes.func.isRequired
 };
 
 export default List;
