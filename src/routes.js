@@ -6,7 +6,7 @@ import SingleBoardPage from './components/SingleBoard/SingleBoardPage';
 
 export default (
     <div>
-        <Route path="/" exact component={App}></Route>
+        <Route path="/" exact component={BoardsPage}></Route>
         <Route path="/boards/:boardName" component={SingleBoardPage} />
         <Route path="/boards" exact component={BoardsPage} />
     </div>

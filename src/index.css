@@ -284,3 +284,21 @@ a {
     cursor: pointer;
     font-size: 16px;
 }
+
+.cYQggE {
+    background-image: url(https://trello-copy-ddiaorohmd.now.sh/static/media/logo.3c0d526e.svg);
+    width: 65px;
+    height: 65px;
+    background-repeat: no-repeat;
+    -webkit-filter: drop-shadow(3px 3px 3px #333);
+    filter: drop-shadow(3px 3px 3px #333);
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
