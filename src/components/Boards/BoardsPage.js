@@ -5,7 +5,6 @@ import * as boardsActions from './../../actions/boardsActions';
 import AddBoard from './AddBoard';
 import BoardsList from './BoardsList';
 
-
 class BoardsPage extends React.Component {
 
     constructor() {

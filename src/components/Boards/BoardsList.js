@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SingleBoard from './SingleBoard';
 
+const styles = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+};
+
 const BoardsList = ({ boards }) => {
     return (
-        <div>
+        <div style={styles}>
             {boards.map(b => <SingleBoard key={b.name} board={b} />)}
         </div>
     );
