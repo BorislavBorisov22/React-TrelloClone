@@ -1,6 +1,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
+import { DragSource } from 'react-dnd';
 
 const style = {
     opacity: 1,
@@ -16,6 +17,12 @@ const tickStyle = {
     position: 'absolute',
     right: '20px'
 }
+
+const cardSource = {
+    beginDrag({ cardName }) {
+        return { cardName };
+    }
+};
 
 const ListCard = ({ cardName }) => {
     return (
