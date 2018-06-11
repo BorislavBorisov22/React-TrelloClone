@@ -13,8 +13,8 @@ const style = {
 
 const tickStyle = {
     marginTop: '12px',
-    position: 'relative',
-    left: '20px'
+    position: 'absolute',
+    right: '20px'
 }
 
 const ListCard = ({ cardName }) => {
