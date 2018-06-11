@@ -3,7 +3,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './../../Common/Input';
 import ListCard from './ListCard';
+import { DropTarget } from 'react-dnd';
+import ItemTypes from './../../../constants/itemTypes';
 
+const dropSource = {
+    drop(props, monitor) {
+        const card = monitor.getItem();
+        props.addCard(card.cardName, props.list.name);
+    }
+};
+
+function collect(connect, monitor) {
+    return {
+        connectDropTarget: connect.dropTarget(),
+        canDrop: monitor.canDrop(),
+    };
+}
+
+@DropTarget(ItemTypes.CARD, dropSource, collect)
 
 class List extends React.Component {
 
@@ -24,9 +41,9 @@ class List extends React.Component {
     }
 
     render() {
-        const { list } = this.props;
+        const { list, connectDropTarget } = this.props;
 
-        return (
+        return connectDropTarget((
             <div className="sc-ckVGcZ pzoVb">
                 <h4 className="sc-jKJlTe ldRhSy">{list.name}</h4>
                 <hr />
@@ -47,7 +64,7 @@ class List extends React.Component {
                     {list.cards && list.cards.map(c => <ListCard key={c} cardName={c} />)}
                 </div>
             </div>
-        )
+        ));
     }
 }
 

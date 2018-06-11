@@ -26,6 +26,11 @@ export default function boardReducer(state = initialState.boards, action) {
                 }
 
                 boardCopy.lists = boardCopy.lists.map(l => {
+                    const cardIndex = l.cards.indexOf(card);
+                    if (cardIndex >= 0) {
+                        l.cards.splice(cardIndex, 1);
+                    }
+
                     l.cards = [...l.cards];
                     if (l.name === listName) {
                         l.cards.push(card);

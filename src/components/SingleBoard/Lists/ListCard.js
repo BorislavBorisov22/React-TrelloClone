@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { DragSource } from 'react-dnd';
+import ItemTypes from './../../../constants/itemTypes';
 
 const style = {
     opacity: 1,
@@ -14,8 +15,8 @@ const style = {
 
 const tickStyle = {
     marginTop: '12px',
-    position: 'absolute',
-    right: '20px'
+    position: 'relative',
+    left: '20px'
 }
 
 const cardSource = {
@@ -24,17 +25,37 @@ const cardSource = {
     }
 };
 
-const ListCard = ({ cardName }) => {
-    return (
-        <div className="sc-kGXeez dQRJlP" style={style}>
-            <h5 className="sc-kpOJdX dUecFp">{cardName}</h5>
-            <div style={tickStyle} className="sc-dxgOiQ bjdCWn">✓</div>
-        </div>
-    );
+function collect(connect, monitor) {
+    return {
+        connectDragSource: connect.dragSource(),
+        isDragging: monitor.isDragging()
+    }
+}
+
+@DragSource(ItemTypes.CARD, cardSource, collect)
+
+class ListCard extends React.Component {
+
+    render() {
+        const { connectDragSource, isDragging, cardName } = this.props;
+        return connectDragSource((
+            <div style={{
+                ...style,
+                opacity: isDragging ? 0.5 : 1,
+                cursor: ''
+            }}
+                className="sc-kGXeez dQRJlP">
+                <h5 className="sc-kpOJdX dUecFp">{cardName}</h5>
+                <div style={tickStyle} className="sc-dxgOiQ bjdCWn">✓</div>
+            </div>
+        ));
+    }
 };
 
 ListCard.propTypes = {
-    cardName: PropTypes.string.isRequired
+    cardName: PropTypes.string.isRequired,
+    connectDragSource: PropTypes.func,
+    isDragging: PropTypes.bool
 };
 
 export default ListCard;
