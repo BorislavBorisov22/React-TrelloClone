@@ -6,9 +6,12 @@ import { ADD_CARD_TO_LIST_ACTION } from './../actions/actions';
 export default function boardReducer(state = initialState.boards, action) {
     switch (action.type) {
         case CREATE_BOARD_ACTION:
-            return [...state, Object.assign({}, action.payload)]
+            let newState = [...state, Object.assign({}, action.payload)]
+            localStorage.setItem('boards', JSON.stringify(newState));
+
+            return newState;
         case ADD_LIST_TO_BOARD_ACTION:
-            return state.map(b => {
+            newState = state.map(b => {
                 const boardCopy = Object.assign({}, b);
                 if (boardCopy.name === action.payload.boardName) {
                     boardCopy.lists = [...boardCopy.lists, action.payload.list];
@@ -16,10 +19,12 @@ export default function boardReducer(state = initialState.boards, action) {
 
                 return boardCopy;
             });
+            localStorage.setItem('boards', JSON.stringify(newState));
+            return newState;
         case ADD_CARD_TO_LIST_ACTION:
             const { card, listName, boardName } = action.payload;
 
-            const newState = state.map(b => {
+            newState = state.map(b => {
                 const boardCopy = Object.assign({}, b);
                 if (boardCopy.name !== boardName || !boardCopy.lists) {
                     return boardCopy;
@@ -42,6 +47,7 @@ export default function boardReducer(state = initialState.boards, action) {
                 return boardCopy;
             });
 
+            localStorage.setItem('boards', JSON.stringify(newState));
             return newState;
         default:
             return state;
